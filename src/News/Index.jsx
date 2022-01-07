@@ -7,6 +7,17 @@ import Navbars from "./Navbar";
 import Searchs from "./Searchs";
 
 export default class News extends React.Component{
+    state = {
+        value : []
+    }
+
+    handleValue = (data) => {
+        this.setState({
+            value:data
+        });
+        console.log(this.state.value)
+       
+    }
 
     render(){
         return(
@@ -14,11 +25,11 @@ export default class News extends React.Component{
             <Navbars/>
             <br />
             <Container >
-             <Searchs/>
+             <Searchs receiValue={this.handleValue}/>
 
             
              <div className="row">
-             <Cards/>  
+             <Cards value={this.state.value}/>  
              </div>
 
              </Container>  

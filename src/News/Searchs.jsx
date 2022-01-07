@@ -1,6 +1,6 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {  Button, Card, FormControl, InputGroup, Spinner } from "react-bootstrap";
+import {  FormControl, InputGroup, Spinner } from "react-bootstrap";
 
 import axios from "axios";
 
@@ -18,7 +18,8 @@ export default class Searchs extends React.Component{
         const news = res.data.articles;
 
         this.setState({ news });
-        console.log(this.state)
+        // console.log(this.state)
+        this.props.receiValue(news)
       }).catch(e => {
         console.log(e)
       }).then(()=>{
