@@ -1,23 +1,43 @@
 
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import Cards from "./Cards";
+import axios from "axios";
 
 import Navbars from "./Navbar";
 import Searchs from "./Searchs";
 
 export default class News extends React.Component{
     state = {
+        news: [],
         value : []
-    }
+       
+      }
 
-    handleValue = (data) => {
-        this.setState({
-            value:data
-        });
-        console.log(this.state.value)
+      handleValue = (data) => {
+                this.setState({
+                    value:data
+                });
+                console.log(this.state.value)
+               
+            }
+    componentDidMount(){
+       
+        axios.get('https://newsapi.org/v2/top-headlines?country=id&apiKey=4994cc78db5f49bfbac2484a02e76cfe')
+        .then(res => { 
+          const news = res.data.articles;
+            this.setState({ news })
+          console.log(this.state.news)
+          
+        }).catch(e => {
+          console.log(e)
+        }).then(()=>{
+          <Spinner animation="border" />
+        })
        
     }
+
+   
 
     render(){
         return(
@@ -29,7 +49,13 @@ export default class News extends React.Component{
 
             
              <div className="row">
-             <Cards value={this.state.value}/>  
+                {
+                     this.state.news.map(news => {
+                         return <Cards img={news.urlToImage} title={news.title} published={news.publishedAt} desc={news.description} link={news.url} /> 
+                     })
+                }
+              
+            
              </div>
 
              </Container>  
