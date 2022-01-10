@@ -9,9 +9,9 @@ export default class Navbars extends React.Component{
   
     render(){
         return(
-            <Navbar bg="primary" variant="dark"  >
+            <Navbar bg="primary" variant="dark" fixed="top" >
             <Container>
-            <Navbar.Brand href= "" >Sayyas News</Navbar.Brand>
+            <Navbar.Brand href= "http://localhost:3000" >Sayyas News</Navbar.Brand>
             <Nav className="me-auto">
               <Nav.Link href="#src">Home</Nav.Link>
              

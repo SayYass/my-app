@@ -19,7 +19,7 @@ export default class Searchs extends React.Component{
 
         this.setState({ news });
         // console.log(this.state)
-        this.props.receiValue(news)
+        this.props.receiValue(src)
       }).catch(e => {
         console.log(e)
       }).then(()=>{

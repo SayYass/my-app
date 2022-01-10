@@ -21,9 +21,9 @@ export default class News extends React.Component{
                 console.log(this.state.value)
                
             }
-    componentDidMount(){
-       
-        axios.get('https://newsapi.org/v2/top-headlines?country=id&apiKey=4994cc78db5f49bfbac2484a02e76cfe')
+
+    handleTrending = () => {
+      axios.get('https://newsapi.org/v2/top-headlines?country=id&apiKey=4994cc78db5f49bfbac2484a02e76cfe')
         .then(res => { 
           const news = res.data.articles;
             this.setState({ news })
@@ -34,9 +34,39 @@ export default class News extends React.Component{
         }).then(()=>{
           <Spinner animation="border" />
         })
+    }
+
+    handleFilter = () => {
+      
+      axios.get('https://newsapi.org/v2/everything?' +
+      'q=' + this.state.value +
+      '&apiKey=4994cc78db5f49bfbac2484a02e76cfe')
+          .then(res => {
+            const news = res.data.articles;
+    
+            this.setState({ news });
+            console.log(this.state)
+            this.props.receiValue(news)
+          }).catch(e => {
+            console.log(e)
+          }).then(()=>{
+            <Spinner animation="border" />
+          })
+
+    }
+    componentDidMount(){
+      
+        this.handleTrending();
+       
+      
        
     }
 
+    componentDidUpdate(){
+      
+       this.handleFilter();
+        
+    }
    
 
     render(){
@@ -45,7 +75,7 @@ export default class News extends React.Component{
             <Navbars/>
             <br />
             <Container >
-             <Searchs receiValue={this.handleValue}/>
+             <Searchs receiValue={this.handleValue} />
 
             
              <div className="row">
