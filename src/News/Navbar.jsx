@@ -13,7 +13,7 @@ export default class Navbars extends React.Component{
             <Container>
             <Navbar.Brand href= "http://localhost:3000" >Sayyas News</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="#src">Home</Nav.Link>
+              <Nav.Link href="#src">Search</Nav.Link>
              
             </Nav>
             </Container>
