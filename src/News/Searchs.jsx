@@ -1,8 +1,8 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {  FormControl, InputGroup, Spinner } from "react-bootstrap";
+import {  FormControl, InputGroup} from "react-bootstrap";
 
-import axios from "axios";
+
 
 
 export default class Searchs extends React.Component{
@@ -11,6 +11,9 @@ export default class Searchs extends React.Component{
       event.preventDefault();
       let src = JSON.stringify(this.state.key);  
    
+ 
+        this.props.receiValue(src)
+     
   } 
 render(){
     return( 

@@ -62,10 +62,10 @@ export default class News extends React.Component{
        
     }
 
-    componentDidUpdate(){
-      
+    componentDidUpdate(prevState){
+      if (this.state.value !== prevState){
        this.handleFilter();
-        
+      }
     }
    
 
