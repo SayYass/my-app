@@ -2,7 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Card, Spinner } from "react-bootstrap";
 
-import Searchs from "./Searchs";
+
 
 
  const Cards = (props) => {
